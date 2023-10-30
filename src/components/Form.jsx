@@ -12,7 +12,11 @@ function Form({ onFormSubmit, isDark }) {
     Note: ""
   });
 
- 
+  const [Table ,setTable] = useState([])
+
+  
+
+
   const { ownerName, petName, Date, Time, Note } = formData;
 
   const handleInputChange = (e) => {
@@ -26,8 +30,14 @@ function Form({ onFormSubmit, isDark }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onFormSubmit(formData);
+    setFormData({
+      ownerName: "",
+      petName: "",
+      Date: "",
+      Time: "",
+      Note: ""
+    })
 
-    // console.log(formData);
   };
 
   return (
@@ -38,12 +48,12 @@ function Form({ onFormSubmit, isDark }) {
         </div>
         <div className='grid grid-cols-2 items-center gap-5 '>
 
-          <Input title={'Owner name'} name="ownerName" setInputText={handleInputChange} value={ownerName}/>
-          <Input title={'Pet name'} name="petName" setInputText={handleInputChange} value={petName}/>
-          <Input title={'Apt Date'} name="Date" type='date' setInputText={handleInputChange} value={Date}/>
-          <Input title={'Apt Time'} name="Time" type='time' setInputText={handleInputChange} value={Time}/>
-          <TextErea title={'Note'} name="Note" value={Note} setInputText={handleInputChange}/>
-          
+          <Input title={'Owner name'} name="ownerName" setInputText={handleInputChange} value={ownerName} />
+          <Input title={'Pet name'} name="petName" setInputText={handleInputChange} value={petName} />
+          <Input title={'Apt Date'} name="Date" type='date' setInputText={handleInputChange} value={Date} />
+          <Input title={'Apt Time'} name="Time" type='time' setInputText={handleInputChange} value={Time} />
+          <TextErea title={'Note'} name="Note" value={Note} setInputText={handleInputChange} />
+
         </div>
         <button className='relative justify-self-end bg-blue-400 px-5 py-2 text-white rounded-xl'>
           Submit
